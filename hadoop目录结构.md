@@ -1,0 +1,5 @@
+- bin 存放Hadoop相关服务(hadfs,yarn,mapred) 进行操作的脚本
+- etc Hadoop的配置文件目录 存放Hadoop的配置文件
+- lib 存放Hadoop 的本地库 (对数据进行压缩解压缩功能)
+- sbin 存放启动或停止Hadoop相关服务的脚本
+- share 存放Hadoop的依赖jar包,文档,和官方案例
