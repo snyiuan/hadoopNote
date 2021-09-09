@@ -14,6 +14,7 @@
 13. hadoop fs -copyToLocal/-get targetfile renamefilename
 14. (重要,末尾都是新的数据)显示末尾1kb数据hadoop fs -tail filename 
 15. hadoop fs -setrep 10 设置副本数,此处设置副本数只是记录在NameNode的元数据,是否真的存那么多副本,还得看DataNode的数量,目前只有3台设备,最多就只有3个副本,只有节点增加到10台,副本数才能达到10
+16. hdfs haadmin -t
     
 ## 数据均衡
 1. hdfs diskbalancer -plan hadoop102
