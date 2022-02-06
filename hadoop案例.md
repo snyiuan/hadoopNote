@@ -5,11 +5,11 @@
 
 ### 2.HDFS参数优化
 1. hadoop-env.sh
-```
+```bash
 export HDFS_NAMENODE_OPTS="-Dhadoop.security.logger=INFO,RFAS -Xmx1024m"
 export HDFS_DATANODE_OPTS="-Dhadoop.security.logger=ERROR,RFAS-Xmx1024m"
 ```
-2. hdfs-site.xml
+1. hdfs-site.xml
 ```
 <!-- NameNode 有一个工作线程池，默认值是 10 ,count=20*loge(machineCount)-->
 <property>
@@ -240,7 +240,7 @@ allowed to exceed this allocation by this ratio.
 </property>
 ```
 2. 分发配置
-```
+```bash
 xsync yarn-site.xml
 ```
 # 启动集群 执行程序

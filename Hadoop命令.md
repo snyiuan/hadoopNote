@@ -30,7 +30,7 @@
 ## 异构存储
 1. hdfs storagepolicies -listPolicies
 2. hdfs storagepolicies -setStoragePolicy -path <path> -policy <policy>
-3. hdfs storagepolicies -getStoragePolicy -path <path>
+3. hdfs storagepolicies -getStoragePolicy -path <path>   
 4. hdfs storagepolicies -unsetStoragePolicy -path <path>
 5. hdfs fsck <filename> -files -blocks -locations//查看文件块的分布
 6. hadoop dfsadmin report//查看集群节点
@@ -99,4 +99,4 @@
     - yarn.scheduler.minimum-allocation-mb 容器最最小内存，默认1G
     - yarn.scheduler.maximum-allocation-mb 容器最最大内存，默认8G
     - yarn.scheduler.minimum-allocation-vcores 容器最小CPU核数，默认1个
-    - yarn.scheduler.maximum-allocation-vcores 容器最大CPU核数，默认4个
+    - yarn.scheduler.maximum-allocation-vcores 容器最大CPU核数，默认4个          

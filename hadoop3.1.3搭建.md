@@ -27,7 +27,7 @@ export PATH=$PATH:$HADOOP_HOME/bin
 export PATH=$PATH:$HADOOP_HOME/sbin
 ```
 - 编写集群分发脚本xsync ,放到/home/user/bin,添加可执行 chmod +x xsync
-```
+```shell
     /*
     *安全拷贝scure copy
     scp -r $pdir/$name $user@host:$pdir/$fname*/
@@ -100,16 +100,16 @@ done
 </table>
 ## 默认配置文件
 
-文件 | 位置
----|---
-[core-default.xml] | hadoop-common-3.1.3.jar/core-default.xml
-[hdfs-default.xml] | hadoop-hdfs-3.1.3.jar/hdfs-default.xml
-[yarn-default.xml] | hadoop-yarn-common-3.1.3.jar/yarn-default.xml
-[mapred-default.xml] | hadoop-mapreduce-client-core-3.1.3.jar/mapred-default.xml
+| 文件                 | 位置                                                      |
+| -------------------- | --------------------------------------------------------- |
+| [core-default.xml]   | hadoop-common-3.1.3.jar/core-default.xml                  |
+| [hdfs-default.xml]   | hadoop-hdfs-3.1.3.jar/hdfs-default.xml                    |
+| [yarn-default.xml]   | hadoop-yarn-common-3.1.3.jar/yarn-default.xml             |
+| [mapred-default.xml] | hadoop-mapreduce-client-core-3.1.3.jar/mapred-default.xml |
 
 - cd $HADOOP_HOME/etc/hadoop
 - core-site.xml
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -131,7 +131,7 @@ done
 </configuration>
 ```
 - hdfs-site.xml
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -148,7 +148,7 @@ done
 </configuration>
 ```
 - yarn-site.xml
-```
+```xml     
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
@@ -200,7 +200,7 @@ start-dfs.sh
 start-yarn.sh
 ```
 ### 配置历史服务器mapred-site.xml
-```
+```xml
 <!-- 历史服务器端地址 -->
 <property>
  <name>mapreduce.jobhistory.address</name>
@@ -213,7 +213,7 @@ start-yarn.sh
 </property>
 ```
 ### 开启日志聚集功能 yarn-site.xml,
-```
+```xml
 <!-- 开启日志聚集功能 -->
 <property>
  <name>yarn.log-aggregation-enable</name>
@@ -226,16 +226,16 @@ start-yarn.sh
 </property>
 <!-- 设置日志保留时间为 7 天 -->
 <property>
- <name>yarn.log-aggregation.retain-seconds</name>
+ <name>yarn.log-aggregation.retain-seconds</name>   
  <value>604800</value>
 </property>
 ```
-### 集群时间同步(公网环境不用)
+### 集群时间同步(公网环境不用)  
 - 安装ntp yum install ntp
 - 修改配置vim /etc/ntp.conf 
-```
+```bash
 //修改:
-restrict 192.168.66.0 mask 255.255.255.0 nomodify notrap
+restrict 192.168.66.0 mask 255.255.255.0 nomodify notrapd
 //注释自动同步网上时间
 # Use public servers from the pool.ntp.org project.
 # Please consider joining the pool (http://www.pool.ntp.org/join.html).

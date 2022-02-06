@@ -31,7 +31,7 @@
 ### 更新yarn-site.xml需要重启yarn,
 ### 更新队列信息,yarn rmadmin -refreshQueues
 ### 代码中设置
-```
+```java
 public class WcDrvier {
  public static void main(String[] args) throws IOException,
 ClassNotFoundException, InterruptedException {
@@ -39,14 +39,14 @@ ClassNotFoundException, InterruptedException {
  conf.set("mapreduce.job.queuename","hive");
  //1. 获取一个 Job 实例
  Job job = Job.getInstance(conf);
- 。。。 。。。
+ //。。。 。。。
  //6. 提交 Job
  boolean b = job.waitForCompletion(true);
  System.exit(b ? 0 : 1);
  }
 }
 ```
-```
+```xml
   <property>
     <name>yarn.scheduler.capacity.root.queues</name>
     <!-- 配置队列 -->
@@ -79,7 +79,7 @@ ClassNotFoundException, InterruptedException {
 
 ## 公平调度器
 ##### 修改yarn-site.xml
-```
+```xml
 <property>
  <name>yarn.resourcemanager.scheduler.class</name>
 <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
@@ -97,7 +97,7 @@ ClassNotFoundException, InterruptedException {
 </property>
 ```
 ##### 配置fair-scheduler.xml
-```
+```xml
 <?xml version="1.0"?>
 <allocations>
  <!-- 单个队列中 Application Master 占用资源的最大比例,取值 0-1 ，企业一般配置 0.1
@@ -152,11 +152,11 @@ default 表示把任务提交到 default 队列 -->
 </allocations>
 ```
 ### 提交任务时指定队列，按照配置规则，任务会到指定的 root.test 队列 
-```
+```shell
  hadoop jar /opt/module/hadoop3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.3.jar pi -D mapreduce.job.queuename=root.test 1 1
 ```
 ### 提交任务时不指定队列，按照配置规则，任务会到 root.atguigu.atguigu 队列
-```
+```shell
  hadoop jar /opt/module/hadoop3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.3.jar pi 1 1
   hadoop jar wc.jar WordCountDriver -D mapreduce.job.queuename=root.test /input /output1
    hadoop jar wc.jar com.z.mapreduce.wordcount2.WordCountDriver /input /output1
